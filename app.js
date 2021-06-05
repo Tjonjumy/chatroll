@@ -23,11 +23,8 @@ function sendCv() {
         const fieldValue = formElement.elements[i].value;
         if (fieldName) {
             if (fieldName === 'picture' && fieldValue) {
-                data[fieldName] = attachFile.files[0].name;
+                data[fieldName] = inputImgElm.files[0].name;
                 continue;
-            }
-            if (fieldName === 'name' && (!fieldValue.trim() || fieldValue.trim().indexOf(' ') < 0)) {
-                console.log(formElement.elements[i])
             }
             data[fieldName] = fieldValue;
         }
@@ -54,6 +51,9 @@ function validator() {
                     } else {
                         e.target.setCustomValidity('');
                     }
+                } else if (fieldName === 'picture') {
+                    const imgName = inputImgElm.files[0].name;
+                    nameImgElm.setAttribute('data-after', imgName);
                 }
             }
         })
@@ -82,11 +82,6 @@ function sendRequest(url, data) {
             alertBoxElm.style.display = 'block';
             return error;
         })
-}
-
-function getNameFile(event) {
-    const imgName = inputImgElm.files[0].name
-    nameImgElm.setAttribute('data-after', imgName)
 }
 
 function closeAlert() {
