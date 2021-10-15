@@ -9,6 +9,13 @@
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script>
+        function updateIframe(){
+            var myFrame = $("#myframe").contents().find('body');
+            var textareaValue = $("textarea").val();
+            myFrame.html(textareaValue);
+        }
+    </script>
 </head>
 <body>
     <div class="container-iframe">
@@ -21,6 +28,10 @@
 
         </textarea>
     </div>
-    <script type="text/javascript"></script>
+    
+    <textarea rows="5" cols="50" placeholder="Type HTML or text here..."></textarea>
+    <button type="button" onclick="updateIframe()">Insert Content</button>
+    <iframe id="myframe"></iframe>
+    <script type="text/javascript" src="./app.js"></script>
 </body>
 </html>
